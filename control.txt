@@ -1,0 +1,6 @@
+{
+  "status": "online",
+  "version": "1.0.0",
+  "news": "SC ON GASKEN",
+  "maintenance": false
+}
