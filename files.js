@@ -2128,7 +2128,7 @@ bot.on("callback_query", async (ctx) => {
         for (let i = 0; i < 50; i++) {
           await DelayOneMsgPermaVnX(sock, target);
           await VnXDelayAiInvis(sock, target);
-          await sleep(1000);
+          await sleep(300);
         }
       }
     },
@@ -2150,7 +2150,7 @@ bot.on("callback_query", async (ctx) => {
       func: async (t) => {
         for (let i = 0; i < 50; i++) {
           await VnXDelayInvisXnulldo(sock, target);
-          await sleep(3000);
+          await sleep(300);
         }
       }
     },
@@ -2161,7 +2161,7 @@ bot.on("callback_query", async (ctx) => {
         for (let i = 0; i < 40; i++) {
           await DelayOneMsgPermaVnX(sock, target);
           VnXDelayAiInvis(sock, target);
-          await sleep(3000);
+          await sleep(300);
         }
       }
     }
@@ -2411,7 +2411,6 @@ bot.command("Kelzu", premGroupOnly(), async (ctx) => {
     try {
       await VnXDelayAiInvis(sock, target);
       await DelayOneMsgPermaVnX(sock, target);
-      await VnXDelayInvisXnulldo(sock, target);
 
       const ms = Date.now() - startAt;
       const sec = Math.floor(ms / 1000);
