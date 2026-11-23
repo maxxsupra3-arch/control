@@ -1,0 +1,16 @@
+{
+  "base_url": "http://163.52.135.154:5725",
+  "Firebase": {
+    "apikey": "",
+    "appId": "",
+    "messagingSenderId": "",
+    "projectId": "",
+    "storageBucket": "" },
+  "update": {
+    "enabled": true,
+    "version": "1.0",
+    "apk_url": "",
+    "force": "false",
+    "changelog": "versi terbaru aplikasi."
+  }
+  
